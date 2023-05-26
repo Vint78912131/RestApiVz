@@ -1,0 +1,15 @@
+image: maven:latest
+
+default:
+  tags:
+    - shell
+
+test:
+  stage: test
+  script:
+    - mvn clean test
+    - mvn io.qameta.allure:allure-maven:serve
+  artifacts:
+    when: always
+    paths:
+      - /target/site/allure-maven-plugin/index
