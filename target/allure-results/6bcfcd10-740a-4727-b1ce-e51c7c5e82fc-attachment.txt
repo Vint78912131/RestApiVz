@@ -1,0 +1,20 @@
+<html>
+  <head>
+    <title>502 Proxy Error</title>
+  </head>
+  <body>
+    <h1>Proxy Error</h1>
+    <p>
+The proxy server received an invalid
+response from an upstream server.      <br clear="none"/>
+
+The proxy server could not handle the request       <em>
+        <a shape="rect" href="/vm/0beac2f3-98a6-4947-9273-5b253085bf3b/clone">POST /vm/0beac2f3-98a6-4947-9273-5b253085bf3b/clone</a>
+      </em>
+.    </p>
+    <p>
+
+Reason:       <strong>Error reading from remote server</strong>
+    </p>
+  </body>
+</html>

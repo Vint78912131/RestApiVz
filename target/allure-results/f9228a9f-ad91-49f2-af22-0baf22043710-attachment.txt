@@ -1,0 +1,9 @@
+{
+    "status": {
+        "code": -2147282875,
+        "message": "Failed to migrate the Container or virtual machine. You are trying to migrate the Container or virtual machine to the source server. Please specify another destination server and try again"
+    },
+    "payload": {
+        
+    }
+}

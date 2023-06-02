@@ -1,0 +1,14 @@
+{
+    "status": {
+        "code": 0,
+        "message": "Ok"
+    },
+    "payload": {
+        "uuid": "fd88ab9d-9c3b-40d0-b3b0-4ca96b61b6fa",
+        "name": "snap_name",
+        "date": "2023-06-02 11:34:29",
+        "current": true,
+        "state": "poweron",
+        "description": "test snapshot VM"
+    }
+}

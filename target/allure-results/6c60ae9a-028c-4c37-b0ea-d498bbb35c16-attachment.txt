@@ -1,0 +1,58 @@
+{
+    "status": {
+        "code": 0,
+        "message": "Ok"
+    },
+    "payload": {
+        "snapshots": [
+            {
+                "parent": "",
+                "current": false,
+                "uuid": "e05260ca-7487-480e-8057-f1a89a5810ac",
+                "name": "snap_name",
+                "description": "test snapshot VM",
+                "date": "2023-05-29 15:50:50"
+            },
+            {
+                "parent": "e05260ca-7487-480e-8057-f1a89a5810ac",
+                "current": false,
+                "uuid": "10f84580-4c2f-4f40-85b5-dabe78e681f0",
+                "name": "snap_name",
+                "description": "test snapshot VM",
+                "date": "2023-05-30 13:39:37"
+            },
+            {
+                "parent": "10f84580-4c2f-4f40-85b5-dabe78e681f0",
+                "current": false,
+                "uuid": "0e8d991f-9823-48c0-a46f-f25b8cea5b2b",
+                "name": "snap_name",
+                "description": "test snapshot VM",
+                "date": "2023-06-02 11:23:10"
+            },
+            {
+                "parent": "0e8d991f-9823-48c0-a46f-f25b8cea5b2b",
+                "current": false,
+                "uuid": "fd88ab9d-9c3b-40d0-b3b0-4ca96b61b6fa",
+                "name": "snap_name",
+                "description": "test snapshot VM",
+                "date": "2023-06-02 11:34:29"
+            },
+            {
+                "parent": "fd88ab9d-9c3b-40d0-b3b0-4ca96b61b6fa",
+                "current": false,
+                "uuid": "ef80125a-8209-407b-933f-8b4be1f6d798",
+                "name": "snap_name",
+                "description": "test snapshot VM",
+                "date": "2023-06-02 11:48:36"
+            },
+            {
+                "parent": "ef80125a-8209-407b-933f-8b4be1f6d798",
+                "current": true,
+                "uuid": "49ca6557-bfee-4641-bd3d-a83b9cfd2b6d",
+                "name": "snap_name",
+                "description": "test snapshot VM",
+                "date": "2023-06-02 11:51:24"
+            }
+        ]
+    }
+}

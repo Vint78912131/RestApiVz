@@ -1,0 +1,132 @@
+{
+    "status": {
+        "code": 0,
+        "message": "Ok"
+    },
+    "payload": [
+        {
+            "ID": "1a35c40d-47f4-4437-a82c-137eec60f630",
+            "EnvID": "439731213",
+            "Name": "test_clone_aleksey",
+            "Description": "",
+            "Type": "VM",
+            "State": "running",
+            "OS": "win-2012",
+            "Template": "no",
+            "Uptime": "0",
+            "Home": "/mnt/vstorage/vols/datastores/ds1/1a35c40d-47f4-4437-a82c-137eec60f630/",
+            "Owner": "root",
+            "GuestTools": {
+                "state": "not_installed"
+            },
+            "GuestTools autoupdate": "on",
+            "Autostart": "off",
+            "Autostop": "stop",
+            "Autocompact": "off",
+            "Boot order": "cdrom0 net0 hdd0 ",
+            "EFI boot": "off",
+            "Allow select boot device": "off",
+            "External boot device": "",
+            "On guest crash": "restart",
+            "Remote display": {
+                "mode": "off",
+                "address": "0.0.0.0"
+            },
+            "Remote display state": "stopped",
+            "Hardware": {
+                "cpu": {
+                    "sockets": "1",
+                    "cpus": "1",
+                    "cores": "1",
+                    "VT-x": true,
+                    "hotplug": false,
+                    "accl": "high",
+                    "mode": "64",
+                    "ioprio": "4",
+                    "iolimit": "0"
+                },
+                "memory": {
+                    "size": "2048Mb",
+                    "hotplug": false
+                },
+                "video": {
+                    "size": "32Mb",
+                    "3d acceleration": "off",
+                    "vertical sync": "yes"
+                },
+                "memory_guarantee": {
+                    "auto": true
+                },
+                "fdd0": {
+                    "enabled": true,
+                    "image": "",
+                    "state": "disconnected"
+                },
+                "hdd0": {
+                    "enabled": true,
+                    "port": "scsi:0",
+                    "image": "/mnt/vstorage/vols/datastores/ds1/1a35c40d-47f4-4437-a82c-137eec60f630/harddisk.hdd",
+                    "type": "expanded",
+                    "size": "32768Mb",
+                    "subtype": "virtio-scsi"
+                },
+                "hdd1": {
+                    "enabled": true,
+                    "port": "scsi:1",
+                    "image": "/mnt/vstorage/vols/datastores/ds1/1a35c40d-47f4-4437-a82c-137eec60f630/harddisk2.hdd",
+                    "type": "expanded",
+                    "size": "200Mb",
+                    "subtype": "hyperv"
+                },
+                "hdd2": {
+                    "enabled": false,
+                    "port": "scsi:2",
+                    "image": "/mnt/vstorage/vols/datastores/ds1/1a35c40d-47f4-4437-a82c-137eec60f630/harddisk3.hdd",
+                    "type": "expanded",
+                    "size": "1000Mb",
+                    "subtype": "virtio-scsi"
+                },
+                "hdd3": {
+                    "enabled": false,
+                    "port": "scsi:3",
+                    "image": "/mnt/vstorage/vols/datastores/ds1/1a35c40d-47f4-4437-a82c-137eec60f630/harddisk4.hdd",
+                    "type": "expanded",
+                    "size": "100Mb",
+                    "subtype": "virtio-scsi"
+                },
+                "hdd4": {
+                    "enabled": false,
+                    "port": "scsi:4",
+                    "image": "/mnt/vstorage/vols/datastores/ds1/1a35c40d-47f4-4437-a82c-137eec60f630/harddisk5.hdd",
+                    "type": "expanded",
+                    "size": "100Mb",
+                    "subtype": "virtio-scsi"
+                },
+                "cdrom0": {
+                    "enabled": true,
+                    "port": "ide:0",
+                    "image": "",
+                    "state": "disconnected"
+                },
+                "usb": {
+                    "enabled": true
+                },
+                "net0": {
+                    "enabled": true,
+                    "dev": "vme001c42950dfc",
+                    "type": "routed",
+                    "mac": "001C42950DFC",
+                    "card": "virtio"
+                }
+            },
+            "SmartMount": {
+                "enabled": false
+            },
+            "Disabled Windows logo": "on",
+            "Nested virtualization": "off",
+            "Offline management": {
+                "enabled": false
+            }
+        }
+    ]
+}

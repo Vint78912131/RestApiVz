@@ -1,0 +1,26 @@
+{
+    "status": {
+        "code": 0,
+        "message": "Ok"
+    },
+    "payload": {
+        "snapshots": [
+            {
+                "parent": "",
+                "current": false,
+                "uuid": "e05260ca-7487-480e-8057-f1a89a5810ac",
+                "name": "snap_name",
+                "description": "test snapshot VM",
+                "date": "2023-05-29 15:50:50"
+            },
+            {
+                "parent": "e05260ca-7487-480e-8057-f1a89a5810ac",
+                "current": true,
+                "uuid": "10f84580-4c2f-4f40-85b5-dabe78e681f0",
+                "name": "snap_name",
+                "description": "test snapshot VM",
+                "date": "2023-05-30 13:39:37"
+            }
+        ]
+    }
+}

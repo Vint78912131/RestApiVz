@@ -1,0 +1,25 @@
+{
+    "status": {
+        "code": 0,
+        "message": "Ok"
+    },
+    "payload": {
+        "hosts": [
+            {
+                "uuid": "3309ce1b-6414-fc4c-ae67-b66e17951d58",
+                "ip_address": "192.168.12.144",
+                "hostname": "rm-rp01"
+            },
+            {
+                "uuid": "4c163491-5282-7941-9601-58316e5e76f7",
+                "ip_address": "192.168.12.143",
+                "hostname": "rm-rp03"
+            },
+            {
+                "uuid": "9687fe4d-ea60-734a-b911-8f9da82bb63d",
+                "ip_address": "192.168.12.142",
+                "hostname": "rm-rp02"
+            }
+        ]
+    }
+}

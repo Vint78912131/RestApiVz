@@ -1,0 +1,9 @@
+{
+    "status": {
+        "code": -2147482510,
+        "message": "Unable to find the snapshot ID. The snapshot may have been deleted. If this problem persists, contact the R-Virtualization support team for assistance."
+    },
+    "payload": {
+        
+    }
+}

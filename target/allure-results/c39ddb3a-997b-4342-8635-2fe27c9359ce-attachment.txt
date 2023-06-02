@@ -1,0 +1,9 @@
+{
+    "status": {
+        "code": -2147483371,
+        "message": "The name %1 is already used by another virtual machine or template. Specify another name and try again."
+    },
+    "payload": {
+        
+    }
+}

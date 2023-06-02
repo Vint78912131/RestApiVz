@@ -1,0 +1,15 @@
+{
+    "status": {
+        "code": 0,
+        "message": "Ok"
+    },
+    "payload": {
+        "statistics": [
+            {
+                "updTime": "2023-05-17 00:00:14",
+                "cpuU": 3.127992,
+                "cpuH": 3.127992
+            }
+        ]
+    }
+}

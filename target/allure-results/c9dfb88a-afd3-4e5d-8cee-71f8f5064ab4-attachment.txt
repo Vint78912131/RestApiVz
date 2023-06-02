@@ -1,0 +1,9 @@
+{
+    "status": {
+        "code": -2147482795,
+        "message": "A virtual machine or folder with the name of \"%1\" already exists in %2. Specify another name and try again."
+    },
+    "payload": {
+        
+    }
+}
