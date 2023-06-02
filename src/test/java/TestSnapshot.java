@@ -1,13 +1,12 @@
 import io.qameta.allure.*;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class TestSnapshot {
-    @BeforeEach
-    public void preparation() {
+    @BeforeAll
+    public static void preparation() {
         TestVz.setCookies();
 //        TestServer.getServerList();
     }
@@ -20,6 +19,7 @@ public class TestSnapshot {
     @Description("Create snapshot VM")
     @Severity(SeverityLevel.MINOR)
     @Step ("Создание снапшота виртуальной машины на сервере.")
+    @Order(1)
     public void createSnapshotVMTest() {
         String requestBody = "{\"name\":\"snap_name\",\"description\":\"test snapshot VM\"}";
         Response response = RestAssured
@@ -53,6 +53,7 @@ public class TestSnapshot {
     @Description("Delete snapshot VM")
     @Severity(SeverityLevel.MINOR)
     @Step ("Удаление снапшота виртуальной машины на сервере.")
+    @Order(5)
     public void deleteSnapshotVMTest() {
         String requestBody = "{\"children\":false}";
         Response response = RestAssured
@@ -61,7 +62,7 @@ public class TestSnapshot {
                 .contentType("application/json")
                 .body(requestBody)
                 .when()
-                .delete("/vm/0beac2f3-98a6-4947-9273-5b253085bf3b/snapshot/a649cecb-6601-44fd-a845-ff0f54698c37");
+                .delete("/vm/0beac2f3-98a6-4947-9273-5b253085bf3b/snapshot/fd88ab9d-9c3b-40d0-b3b0-4ca96b61b6fa");
         try {
             response.then()
                     .assertThat()
@@ -87,13 +88,14 @@ public class TestSnapshot {
     @Description("Switch snapshot VM")
     @Severity(SeverityLevel.MINOR)
     @Step ("Переключение снапшота виртуальной машины на сервере.")
+    @Order(3)
     public void switchSnapshotVMTest() {
         Response response = RestAssured
                 .given()
                 .header("Authorization", TestVz.jwtToken)
                 .contentType("application/json")
                 .when()
-                .post("/vm/0beac2f3-98a6-4947-9273-5b253085bf3b/snapshot/a649cecb-6601-44fd-a845-ff0f54698c37");
+                .post("/vm/0beac2f3-98a6-4947-9273-5b253085bf3b/snapshot/fd88ab9d-9c3b-40d0-b3b0-4ca96b61b6fa");
         try {
             response.then()
                     .assertThat()
@@ -119,6 +121,7 @@ public class TestSnapshot {
     @Description("Get snapshot VM list")
     @Severity(SeverityLevel.MINOR)
     @Step ("Получение списка снапшотов виртуальной машины на сервере.")
+    @Order(2)
     public void getSnapshotVMListTest() {
         Response response = RestAssured
                 .given()
@@ -150,13 +153,14 @@ public class TestSnapshot {
     @Description("Get snapshot VM parametrs")
     @Severity(SeverityLevel.MINOR)
     @Step ("Получение параметров снапшотов виртуальной машины на сервере.")
+    @Order(4)
     public void getSnapshotVMParametersTest() {
         Response response = RestAssured
                 .given()
                 .header("Authorization", TestVz.jwtToken)
                 .contentType("application/json")
                 .when()
-                .get("/vm/0beac2f3-98a6-4947-9273-5b253085bf3b/snapshot/5b5d23d4-57e5-4a00-9c63-2e3fc40222b4");
+                .get("/vm/0beac2f3-98a6-4947-9273-5b253085bf3b/snapshot/fd88ab9d-9c3b-40d0-b3b0-4ca96b61b6fa");
         try {
             response.then()
                     .assertThat()

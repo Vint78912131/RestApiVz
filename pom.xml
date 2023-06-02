@@ -87,12 +87,6 @@
       <scope>test</scope>
     </dependency>
 
-<!--    <dependency>-->
-<!--      <groupId>org.junit.vintage</groupId>-->
-<!--      <artifactId>junit-vintage-engine</artifactId>-->
-<!--      <version>5.8.2</version>-->
-<!--      <scope>test</scope>-->
-<!--    </dependency>-->
 
     <!-- https://mvnrepository.com/artifact/io.rest-assured/rest-assured -->
     <dependency>
@@ -105,7 +99,7 @@
       <groupId>org.json</groupId>
       <artifactId>json</artifactId>
       <version>20210307</version>
-                <scope>test</scope>
+      <scope>test</scope>
     </dependency>
 <!--    <dependency>-->
 <!--      <groupId>org.testng</groupId>-->

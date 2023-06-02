@@ -1,14 +1,13 @@
 import io.qameta.allure.*;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class TestHdd {
 
-    @BeforeEach
-    public void preparation() {
+    @BeforeAll
+    public static void preparation() {
         TestVz.setCookies();
 //        TestServer.getServerList();
     }
@@ -22,6 +21,7 @@ public class TestHdd {
     @Description("Add new HDD")
     @Severity(SeverityLevel.MINOR)
     @Step ("Добавить новый HDD для ВМ.")
+    @Order(1)
     public void addHddTest() {
         String requestBody = "{\n" +
                 "\"deviceType\":\"expand\",\n" +
@@ -63,6 +63,7 @@ public class TestHdd {
     @Description("Set new HDD properties")
     @Severity(SeverityLevel.MINOR)
     @Step ("Изменение параметров HDD для ВМ.")
+    @Order(2)
     public void setHddTest() {
         String requestBody = "{\n" +
                 "\"deviceType\":\"plain\",\n" +

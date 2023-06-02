@@ -1,9 +1,0 @@
-{
-    "status": {
-        "code": 0,
-        "message": "Ok"
-    },
-    "payload": {
-        "jwtToken": "eyJhbGciOiAiSFMyNTYiLCAidHlwIjogIkpXVCJ9.eyJ0b2tlbiI6ICJ5eXN0NHl1bW5hYWFhbXh0cWR6M2J5eW0zcXJ6YWFhYSIsICJMb2dpblVzZXIiOiAicm9vdCIsICJzaWQiOiAiQVFVQUFBQUFJQUZ6Y05MTUlZWkFqckptUERuUm1ERmtBQUFBQUE9PSJ9.N8QX7KRpVRLF-7d0uLc1CETTgvBmVjDwYm7Enfo6eDk"
-    }
-}

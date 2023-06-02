@@ -1,14 +1,13 @@
 import io.qameta.allure.*;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class TestVirtualMachine {
-    @BeforeEach
-    public void preparation() {
+    @BeforeAll
+    public static void preparation() {
         TestVz.setCookies();
 //        TestServer.getServerList();
     }
@@ -22,6 +21,7 @@ public class TestVirtualMachine {
     @Description("Get VM list")
     @Severity(SeverityLevel.MINOR)
     @Step ("Получить список виртуальных машин на сервере.")
+    @Order(1)
     public void getVMListTest() {
                 Response response = RestAssured
                         .given()
@@ -53,6 +53,7 @@ public class TestVirtualMachine {
     @Description("Get all VM info")
     @Severity(SeverityLevel.MINOR)
     @Step ("Получить детальную информацию о виртуальной машине на сервере.")
+    @Order(2)
     public void getVMInfoTest() {
         Response response = RestAssured
                 .given()
@@ -84,15 +85,16 @@ public class TestVirtualMachine {
     @Description("Clone VM")
     @Severity(SeverityLevel.MINOR)
     @Step ("Клонирование виртуальной машины на сервере.")
+    @Order(9)
     public void cloneVMTest() {
-        String requestBody = "{\"name\":\"NewCloneTestVM\"}";
+        String requestBody = "{\"name\":\"Clone_VM_for_delete\"}";
         Response response = RestAssured
                 .given()
                 .header("Authorization", TestVz.jwtToken)
                 .contentType("application/json")
                 .body(requestBody)
                 .when()
-                .post("/vm/0beac2f3-98a6-4947-9273-5b253085bf3b/clone");
+                .post("/vm/2b938fc7-5abb-4d50-9273-6863d95d91f5/clone");
         try {
             response.then()
                     .assertThat()
@@ -117,6 +119,7 @@ public class TestVirtualMachine {
     @Description("Move VM")
     @Severity(SeverityLevel.MINOR)
     @Step ("Перемещение образа виртуальной машины на сервере.")
+    @Order(10)
     public void moveVMTest() {
         String requestBody = "{\"dst\":\"/home\"}";
         Response response = RestAssured
@@ -150,6 +153,7 @@ public class TestVirtualMachine {
     @Description("Stop VM")
     @Severity(SeverityLevel.MINOR)
     @Step ("Остановка виртуальной машины на сервере.")
+    @Order(4)
     public void stopVMTest() {
         String requestBody = "{\"force\":false,\"acpi\":false,\"kill\":false}";
         Response response = RestAssured
@@ -184,6 +188,7 @@ public class TestVirtualMachine {
     @Description("Start VM")
     @Severity(SeverityLevel.MINOR)
     @Step ("Запуск виртуальной машины на сервере.")
+    @Order(3)
     public void startVMTest() {
         Response response = RestAssured
                 .given()
@@ -216,6 +221,7 @@ public class TestVirtualMachine {
     @Description("Pause VM")
     @Severity(SeverityLevel.MINOR)
     @Step ("Остановка виртуальной машины на сервере.")
+    @Order(5)
     public void pauseVMTest() {
         Response response = RestAssured
                 .given()
@@ -247,6 +253,7 @@ public class TestVirtualMachine {
     @Description("Resume VM")
     @Severity(SeverityLevel.MINOR)
     @Step ("Возобновление работы виртуальной машины на сервере.")
+    @Order(6)
     public void resumeVMTest() {
         String requestBody = "{}";
         Response response = RestAssured
@@ -280,6 +287,7 @@ public class TestVirtualMachine {
     @Description("Suspend VM")
     @Severity(SeverityLevel.MINOR)
     @Step ("Приостановка работы виртуальной машины на сервере.")
+    @Order(7)
     public void suspendVMTest() {
         String requestBody = "{}";
         Response response = RestAssured
@@ -313,8 +321,9 @@ public class TestVirtualMachine {
     @Description("Migrate VM")
     @Severity(SeverityLevel.MINOR)
     @Step ("Миграция виртуальной машины на другой сервер.")
+    @Order(8)
     public void migrateVMTest() {
-        String requestBody = "{\"dst\":\"192.168.12.142\"}";
+        String requestBody = "{\"dst\":\"192.168.12.143\"}";
         Response response = RestAssured
                 .given()
                 .header("Authorization", TestVz.jwtToken)
@@ -336,5 +345,40 @@ public class TestVirtualMachine {
             TestVz.getBody(response);
         }
     }
+
+    @Test
+    @DisplayName("Delete VM")
+    @Epic(value = "Virtualization")
+    @Story("Delete Machine")
+    @Link(name = "doc link", url = "https://documenter.getpostman.com/view/607407/2s93CHtEzX#98639775-78f9-4a7f-9af5-38f5531684eb")
+    @Feature("Delete VM")
+    @Description("Delete VM")
+    @Severity(SeverityLevel.MINOR)
+    @Step ("Удаление виртуальной машины.")
+    @Order(11)
+    public void deleteVMTest() {
+        String requestBody = "{\"force\":true}";
+        Response response = RestAssured
+                .given()
+                .header("Authorization", TestVz.jwtToken)
+                .contentType("application/json")
+                .body(requestBody)
+                .when()
+                .delete("/vm/2288acb2-10eb-4647-aced-2a7823f99b09");
+        try {
+            response.then()
+                    .assertThat()
+                    .statusCode(200)
+                    .contentType("application/json")
+                    .statusLine("HTTP/1.1 200 OK")
+            ;
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } finally {
+            TestVz.getBody(response);
+        }
+    }
+
 
 }

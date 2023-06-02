@@ -1,10 +1,9 @@
 import io.qameta.allure.*;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class TestNet {
 
     @BeforeEach
@@ -22,19 +21,28 @@ public class TestNet {
     @Description("Add new network device")
     @Severity(SeverityLevel.MINOR)
     @Step ("Добавить новый сетевой адаптер для ВМ.")
+    @Order(1)
     public void addNetTest() {
+        String mac = "";
+        for (int i = 0; i < 12; i++) {
+            int hex = (int) (Math.random() * 16);
+            mac += mac + String.format("%02X%s", Integer.toString(hex, 16));;
+        }
+        System.out.println(mac);
+
         String requestBody = "{\n" +
-                "\"enabled\":false,\n" +
-                "\"network\":\"testnetwork\",\n" +
-                "\"mac\":\"001C000C55EC\"\n" +
+                "\"enabled\":true,\n" +
+                "\"network\":\"newtestnetwork\",\n" +
+                "\"mac\":" + mac + "\n" +
                 "}";
+
         Response response = RestAssured
                 .given()
                 .header("Authorization", TestVz.jwtToken)
                 .contentType("application/json")
                 .body(requestBody)
                 .when()
-                .post("/vm/1a35c40d-47f4-4437-a82c-137eec60f630/device/net");
+                .post("/vm/2b938fc7-5abb-4d50-9273-6863d95d91f5/device/net");
         try {
             response.then()
                     .assertThat()
@@ -59,11 +67,12 @@ public class TestNet {
     @Description("Set new network device properties")
     @Severity(SeverityLevel.MINOR)
     @Step ("Изменение параметров сетевого адаптера для ВМ.")
+    @Order(2)
     public void setNetTest() {
         String requestBody = "{\n" +
                 "\"enabled\":true,\n" +
                 "\"network\":\"check_set_network\",\n" +
-                "\"mac\":\"123C42E8F444\"\n" +
+                "\"mac\":\"023C42E8F444\"\n" +
                 "}";
         Response response = RestAssured
                 .given()
@@ -71,7 +80,7 @@ public class TestNet {
                 .contentType("application/json")
                 .body(requestBody)
                 .when()
-                .post("/vm/1a35c40d-47f4-4437-a82c-137eec60f630/device/net/net1");
+                .post("/vm/2b938fc7-5abb-4d50-9273-6863d95d91f5/device/net/net1");
         try {
             response.then()
                     .assertThat()

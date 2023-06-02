@@ -1,21 +1,18 @@
 import io.qameta.allure.*;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
-import junit.framework.TestCase;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.junit.jupiter.api.*;
+import java.util.*;
 
 public class TestServer {
 
     public static List<String> servers = new ArrayList<String>();
 
     public static List<String> srv_uuid = new ArrayList<>();
-    @BeforeEach
-    public void preparation() {
+    @BeforeAll
+    public static void preparation() {
         TestVz.setCookies();
     }
 
@@ -43,23 +40,35 @@ public class TestServer {
                     .contentType("application/json")
                     .statusLine("HTTP/1.1 200 OK")
             ;
-//            System.out.println(JsonPath.from(response.getBody().asString()).getString("payload.hosts[0].uuid"));
-            String hosts = Arrays.toString((response.getBody()
-                    .jsonPath().getList("payload.hosts")
-                    .toString().replaceAll("\\[|\\]","")
-                    .split(",")));
 
+            JSONObject body = new JSONObject(response.getBody().asString());
+            JSONArray hosts = body.getJSONObject("payloads.hosts").names();
+//                    .replaceAll("\\/[|\\]","")
+//                    .split(","))
+                    ;
 
-//            List <String> uuid = Collections.singletonList(JsonPath.from(hosts).get("uuid").toString());
             System.out.println(hosts);
-//            for (String s : hosts) {
-//                System.out.println(JsonPath.from(s).get("uuid"));
-//            }
+//            System.out.println(body);
 
-//            for (String s : books) {
-//                srv_uuid.add(JsonPath.from(JSONObject.valueToString(s)).get("uuid").toString());
-//                System.out.println(srv_uuid);
+//            List <String> uuid = Arrays.asList(JsonPath.from(hosts).get("uuid").toString());
+//            System.out.println(hosts);
+//            System.out.println(uuid);
+//            for (Object s : hosts) {
+//                System.out.println(s + " : " + s.getClass());
+//                System.out.println((Map<String,String>)s.valueOf());
+//                servers.add(s.toString());
 //            }
+//            System.out.println(servers);
+
+
+            for (String s : servers) {
+//                JSONObject json = new JSONObject(s);
+//                System.out.println(json);
+                System.out.println(s);
+            }
+
+//            System.out.println(srv_uuid);
+
 //            for (Object s : servers) {
 //                System.out.println(s);
 //                System.out.println();

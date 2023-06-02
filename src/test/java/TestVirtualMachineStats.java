@@ -1,14 +1,13 @@
 import io.qameta.allure.*;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.*;
 
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class TestVirtualMachineStats {
 
-    @BeforeEach
-    public void preparation() {
+    @BeforeAll
+    public static void preparation() {
         TestVz.setCookies();
 //        TestServer.getServerList();
     }
